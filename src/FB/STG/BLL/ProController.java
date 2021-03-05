@@ -20,7 +20,7 @@ import javax.servlet.annotation.MultipartConfig;
 /**
  * Servlet implementation class ProController
  */
-@WebServlet(urlPatterns = { "/","/products", "/danhmuc", "/ProController" })
+@WebServlet(urlPatterns = {"/products", "/danhmuc", "/ProController" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50)
@@ -51,7 +51,7 @@ public class ProController extends HttpServlet {
 				listPro = DAOProducts.findProductByCategory(Integer.parseInt(id));
 				request.setAttribute("listPro", listPro);
 				catPro = DAOCategories.findAll();
-				request.setAttribute("catCar", catPro);
+				request.setAttribute("catPro", catPro);
 				request.getRequestDispatcher("views/products.jsp").forward(request, response);
 			}
 			// load chi tiet san pham
@@ -82,7 +82,7 @@ public class ProController extends HttpServlet {
 			catPro = DAOCategories.findAll();
 			request.setAttribute("listPro", listPro);
 			request.setAttribute("active", ItemOfPage);
-			request.setAttribute("catCar", catPro);
+			request.setAttribute("catPro", catPro);
 			request.getRequestDispatcher("views/products.jsp").forward(request, response);
 		} catch (Exception ex) {
 			ex.printStackTrace();

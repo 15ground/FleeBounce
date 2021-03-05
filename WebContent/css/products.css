@@ -302,7 +302,7 @@ footer hr {
 /* Pagination */
 .page-btn {
 	margin: 0 auto;
-	max-width: 300px;
+	max-width: 400px;
 	height: 100px;
 }
 
@@ -321,6 +321,25 @@ footer hr {
 }
 
 .page-btn span:hover {
+	background-color: #ff1464;
+	color: #fff;
+}
+
+.page-btn .page-link {
+	display: inline-block;
+	border: 1px solid #ff1464;
+	margin-left: 5px;
+	border-radius: 5px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.page-btn .page-link:hover {
 	background-color: #ff1464;
 	color: #fff;
 }
@@ -455,4 +474,73 @@ td:last-child {
 
 th:last-child {
 	text-align: right;
+}
+/* Categories */
+.box-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 30vh;
+	width: 270px;
+	margin-left: 10px;
+	cursor: pointer;
+	margin: 0 auto;
+}
+
+.box {
+	width: 270px;
+}
+
+.box h2 {
+	color: #fff;
+	background: #ff1464;
+	padding: 10px 20px;
+	font-size: 20px;
+	font-weight: 700;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.box ul {
+	position: relative;
+	background: #fff;
+}
+
+.box ul li {
+	padding: 10px;
+	width: 100%;
+	background: #fff;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+	transition: transform 0.5s;
+}
+
+.box ul:hover li {
+	opacity: .2;
+}
+
+.box ul li:hover {
+	transform: scale(1.1);
+	z-index: 100;
+	background: #ff1464;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	opacity: 1;
+}
+
+.box ul li span {
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	background: #ff1464;
+	color: #fff;
+	display: inline-block;
+	border-radius: 50%;
+	margin-right: 10px;
+	font-weight: 600;
+}
+
+.box ul li:hover span {
+	background: #ff1464;
+	color: #fff;
 }

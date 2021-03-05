@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/sanpham.css">
+	href="${pageContext.request.contextPath}/css/products.css">
 <footer>
 	<div class="container">
 		<div class="content">

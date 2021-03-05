@@ -9,15 +9,24 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/sanpham.css" />
+	href="${pageContext.request.contextPath}/css/products.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<title>FleeBounce HEHE | Cùng mua sắm thả ga</title>
+<title>FLEEBOUNCE | LIVE YOUR LIFE</title>
 </head>
 <body>
 	<c:import url="header.jsp"></c:import>
 	<section>
 		<!-- Danh mục sản phẩm -->
+		<%-- <div class="col col-sm-2">
+			<h3>Danh mục</h3>
+			<div class="list-group">
+				<c:forEach items="${catPro}" var="cat">
+					<a href="danhmuc?id=${cat.getId()}"
+						class="list-group-item list-group-item-action">${cat.getName()}</a>
+				</c:forEach>
+			</div>
+		</div> --%>
 		<div class="categories">
 			<div class="small-container">
 				<div class="content">
@@ -30,6 +39,18 @@
 					<div class="cate-content">
 						<img src="images/category-3.jpg" />
 					</div>
+				</div>
+			</div>
+			<div class="box-container">
+				<div class="box">
+					<h2>Danh mục</h2>
+					<c:forEach items="${catPro}" var="cat">
+						<ul>
+							<li><span>*</span><a href="danhmuc?id=${cat.getId()}"
+								class="list-group-item list-group-item-action">${cat.getName()}</a></li>
+						</ul>
+
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -74,7 +95,11 @@
 				</c:forEach>
 			</div>
 			<div class="page-btn">
-				<span>&#8592</span> <span>1</span> <span>2</span> <span>3</span> <span>...</span>
+				<span>&#8592</span>
+				<c:forEach var="i" begin="1" end="5">
+					<span${i == ItemOfPage ? "ItemOfPage" : ""  }"><a
+						class="page-link" href="products?page=${i}">${i}</a></span>
+				</c:forEach>
 				<span>&#8594</span>
 			</div>
 		</div>

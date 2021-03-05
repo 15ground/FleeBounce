@@ -9,7 +9,7 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/layout.css">
+	href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 	<div class="login">
@@ -29,8 +29,8 @@
 					placeholder="Nhập lại mật khẩu..." />
 			</div>
 			<button name="action" value="sigup">Đăng ký</button>
-			<a href="sigin.jsp" class="sig-up">Đăng nhập</a> / <a
-				href="#" class="forgot-password">Quên mật khẩu</a>
+			<a href="sigin.jsp" class="sig-up">Đăng nhập</a> / <a href="#"
+				class="forgot-password">Quên mật khẩu</a>
 		</form>
 	</div>
 </body>

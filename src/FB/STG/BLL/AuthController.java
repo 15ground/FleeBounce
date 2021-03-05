@@ -82,7 +82,7 @@ public class AuthController extends HttpServlet {
 			request.getRequestDispatcher("/products").forward(request, response);
 		} else {
 			request.setAttribute("message", "Tài khoản hoặc mật khẩu không chính xác!");
-			response.sendRedirect("views/sigin.jsp");
+			request.getRequestDispatcher("views/sigin.jsp").forward(request, response);
 		}
 	}
 
