@@ -18,15 +18,6 @@
 	<c:import url="header.jsp"></c:import>
 	<section>
 		<!-- Danh mục sản phẩm -->
-		<%-- <div class="col col-sm-2">
-			<h3>Danh mục</h3>
-			<div class="list-group">
-				<c:forEach items="${catPro}" var="cat">
-					<a href="danhmuc?id=${cat.getId()}"
-						class="list-group-item list-group-item-action">${cat.getName()}</a>
-				</c:forEach>
-			</div>
-		</div> --%>
 		<div class="categories">
 			<div class="small-container">
 				<div class="content">
@@ -60,7 +51,9 @@
 			<div class="content">
 				<c:forEach items="${listPro}" var="pro">
 					<div class="pro-content">
-						<img src="${pro.getImages()}" />
+						<a href="products?id=${pro.getId()}"> <img
+							src="${pro.getImages()}" />
+						</a>
 						<h4>${pro.getName()}</h4>
 						<div class="rating">
 							<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -79,7 +72,9 @@
 			<div class="content">
 				<c:forEach items="${listPro}" var="pro">
 					<div class="pro-content">
-						<img src="${pro.getImages()}" />
+						<a href="products?id=${pro.getId()}"> <img
+							src="${pro.getImages()}" />
+						</a>
 						<h4>${pro.getName()}</h4>
 						<div class="rating">
 							<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i

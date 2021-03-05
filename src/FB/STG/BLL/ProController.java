@@ -20,7 +20,7 @@ import javax.servlet.annotation.MultipartConfig;
 /**
  * Servlet implementation class ProController
  */
-@WebServlet(urlPatterns = {"/products", "/danhmuc", "/ProController" })
+@WebServlet(urlPatterns = { "/products", "/danhmuc", "/ProController" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50)
@@ -55,22 +55,18 @@ public class ProController extends HttpServlet {
 				request.getRequestDispatcher("views/products.jsp").forward(request, response);
 			}
 			// load chi tiet san pham
-			String page = request.getParameter("page");
 			if (id != null && !id.isEmpty()) {
 				// load chi tiet san pham
 				int idPro = Integer.parseInt(id);
-				// lay chiet san phan du vao id cua car
-				Products proDetail = DAOProducts.findProductsByID(idPro);
-
-				request.setAttribute("carDetail", proDetail);
-				/*
-				 * RequestDispatcher dis =
-				 * this.getServletContext().getRequestDispatcher("views/detailsproduct.jsp");
-				 * dis.forward(request, response);
-				 */
-				request.getRequestDispatcher("views/detailsproduct.jsp").forward(request, response);
+				// lay chiet san phan du vao id cua products
+				listPro = DAOProducts.findAll(1, 4);
+				request.setAttribute("listPro", listPro);
+				Products proDetails = DAOProducts.findProductsByID(idPro);
+				request.setAttribute("proDetails", proDetails);
+				request.getRequestDispatcher("views/prodetails.jsp").forward(request, response);
 			}
 			// load tat cac san pham
+			String page = request.getParameter("page");
 			int ItemOfPage = 1;
 			if (page != null) {
 				ItemOfPage = Integer.parseInt(page);
