@@ -16,6 +16,10 @@
 <body>
 	<c:import url="headerdetails.jsp"></c:import>
 	<section>
+		<div id="fb-root"></div>
+		<script async defer crossorigin="anonymous"
+			src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0"
+			nonce="KRbxZ31Y"></script>
 		<!-- Single Page Detail -->
 		<div class="small-container single-product">
 			<div class="content">
@@ -59,6 +63,9 @@
 						bạn thoải mái nhất</p>
 				</div>
 			</div>
+			<div class="fb-comments"
+				data-href="http://localhost:8080/FleeBounce/products?id=1"
+				data-width="1000" data-numposts="8"></div>
 		</div>
 		<!-- Products -->
 		<div class="small-container">

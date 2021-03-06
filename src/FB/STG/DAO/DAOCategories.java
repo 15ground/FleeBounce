@@ -15,7 +15,7 @@ public class DAOCategories {
 	public static boolean create(Categories product) {
 		try {
 			Connection conn = DBHelper.getConnection();
-			String sql = "INSERT INTO category (name, description) VALUES(?, ?)";
+			String sql = "INSERT INTO categories (name, description) VALUES(?, ?)";
 			if (conn != null) {
 				PreparedStatement pst = conn.prepareStatement(sql);
 				pst.setString(1, product.getName());
@@ -121,7 +121,7 @@ public class DAOCategories {
 				PreparedStatement pst = conn.prepareStatement(sql);
 				pst.setString(1, categories.getName());
 				pst.setString(2, categories.getDescription());
-				pst.setInt(4, categories.getId());
+				pst.setInt(3, categories.getId());
 				int result = pst.executeUpdate();
 				if (result > 0) {
 					return true;

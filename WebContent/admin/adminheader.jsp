@@ -18,45 +18,21 @@ String username = (String) session.getAttribute("username");
 					<c:if test="${currentUser.getRole() eq 'admin' }">
 						<div class="nav-bar">
 							<div class="logo">
-								<a href="http://localhost:8080/FleeBounce/products"> <img src="./images/logo.png" />
+								<a href="http://localhost:8080/FleeBounce/products"> <img
+									src="../images/logo.png" />
 								</a>
 							</div>
 							<nav>
 								<ul>
-									<li><a href="admin/dashboard.jsp">Dashboard</a></li>
-									<li><a href="#">Sản phẩm</a></li>
-									<li><a href="#">Giới thiệu</a></li>
-									<li><a href="#">Liên hệ</a></li>
-									<li><a href="#">${username}</a></li>
+									<li><a class="nav-bar-items" href="http://localhost:8080/FleeBounce/products">Trang chủ</a></li>
+									<li><a class="nav-bar-items" href="#">Sản phẩm</a></li>
+									<li><a class="nav-bar-items" href="#">Giới thiệu</a></li>
+									<li><a class="nav-bar-items" href="#">Liên hệ</a></li>
+									<li><a class="nav-bar-items" href="#">${username}</a></li>
 								</ul>
 							</nav>
 						</div>
-						<a href="#" class="icon"> <img src="./images/cart.png" />
-						</a>
-						<form action="${pageContext.request.contextPath}/AuthController"
-							method="post">
-							<button class="log-out" name="action" value="logout">
-								<i class="fa fa-sign-out" aria-hidden="true"></i>
-							</button>
-						</form>
-					</c:if>
-					<c:if test="${currentUser.getRole() eq 'user' }">
-						<div class="nav-bar">
-							<div class="logo">
-								<a href="http://localhost:8080/FleeBounce/products"> <img src="./images/logo.png" />
-								</a>
-							</div>
-							<nav>
-								<ul>
-									<li><a href="http://localhost:8080/FleeBounce/products">Trang chủ</a></li>
-									<li><a href="#">Sản phẩm</a></li>
-									<li><a href="#">Giới thiệu</a></li>
-									<li><a href="#">Liên hệ</a></li>
-									<li><a href="#">${username}</a></li>
-								</ul>
-							</nav>
-						</div>
-						<a href="#" class="icon"> <img src="./images/cart.png" />
+						<a href="#" class="icon"> <img src="../images/cart.png" />
 						</a>
 						<form action="${pageContext.request.contextPath}/AuthController"
 							method="post">
@@ -70,19 +46,21 @@ String username = (String) session.getAttribute("username");
 					<div class="container-nav">
 						<div class="nav-bar">
 							<div class="logo">
-								<a href="http://localhost:8080/FleeBounce/products"> <img src="./images/logo.png" />
+								<a href="http://localhost:8080/FleeBounce/products"> <img
+									src="../images/logo.png" />
 								</a>
 							</div>
 							<nav>
 								<ul>
-									<li><a href="http://localhost:8080/FleeBounce/products">Trang chủ</a></li>
+									<li><a href="http://localhost:8080/FleeBounce/products">Trang
+											chủ</a></li>
 									<li><a href="#">Sản phẩm</a></li>
 									<li><a href="#">Giới thiệu</a></li>
 									<li><a href="#">Liên hệ</a></li>
 									<li><a href="views/sigin.jsp">Đăng nhập</a></li>
 								</ul>
 							</nav>
-							<a href="#" class="icon"> <img src="./images/cart.png" />
+							<a href="#" class="icon"> <img src="../images/cart.png" />
 							</a>
 						</div>
 					</div>
