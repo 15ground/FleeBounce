@@ -91,7 +91,8 @@ public class AuthController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String repeat_password = request.getParameter("repeat-password");
-		if (email.isEmpty() || username.isEmpty() || password.isEmpty() || repeat_password.isEmpty()) {
+		if (email.isEmpty() || username.isEmpty() || password.isEmpty() || repeat_password.isEmpty() || email.isBlank()
+				|| username.isBlank() || password.isBlank() || repeat_password.isBlank()) {
 			request.setAttribute("message", "Tài khoản hoặc mật khẩu không được để trống!");
 			request.getRequestDispatcher("views/sigup.jsp").forward(request, response);
 		}
@@ -99,7 +100,7 @@ public class AuthController extends HttpServlet {
 			request.setAttribute("message", "Nhập lại mật khẩu không chính xác!");
 			request.getRequestDispatcher("views/sigup.jsp").forward(request, response);
 		} else {
-			User user = new User(email, username, password, "admin");
+			User user = new User(email, username, password, "user");
 			boolean isExist = DAOUser.isExistUser(username);
 			System.out.println("isExist" + isExist);
 			if (isExist) {
@@ -161,6 +162,6 @@ public class AuthController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.removeAttribute("username");
 		session.removeAttribute("currentUser");
-		response.sendRedirect("views/sigin.jsp");
+		request.getRequestDispatcher("/home").forward(request, response);
 	}
 }

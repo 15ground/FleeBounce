@@ -28,7 +28,7 @@
 						<td>
 							<form action="category" method="post">
 								<input type="hidden" name="id" value="${cat.getId()}" /> <a
-									href="?id=${cat.getId()}">Edit</a>
+									href="?id=${cat.getId()}">Sửa</a>
 								<button type="submit" name="action" value="Delete"
 									class="btn btn-danger">X</button>
 							</form>

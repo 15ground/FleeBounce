@@ -20,7 +20,7 @@ import javax.servlet.annotation.MultipartConfig;
 /**
  * Servlet implementation class ProController
  */
-@WebServlet(urlPatterns = { "/products", "/danhmuc", "/ProController" })
+@WebServlet(urlPatterns = { "/home", "/products", "/danhmuc", "/ProController" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50)

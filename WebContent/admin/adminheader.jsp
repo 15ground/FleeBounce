@@ -18,13 +18,13 @@ String username = (String) session.getAttribute("username");
 					<c:if test="${currentUser.getRole() eq 'admin' }">
 						<div class="nav-bar">
 							<div class="logo">
-								<a href="http://localhost:8080/FleeBounce/products"> <img
+								<a href="http://localhost:8080/FleeBounce/home"> <img
 									src="../images/logo.png" />
 								</a>
 							</div>
 							<nav>
 								<ul>
-									<li><a class="nav-bar-items" href="http://localhost:8080/FleeBounce/products">Trang chủ</a></li>
+									<li><a class="nav-bar-items" href="http://localhost:8080/FleeBounce/home">Trang chủ</a></li>
 									<li><a class="nav-bar-items" href="#">Sản phẩm</a></li>
 									<li><a class="nav-bar-items" href="#">Giới thiệu</a></li>
 									<li><a class="nav-bar-items" href="#">Liên hệ</a></li>
@@ -46,13 +46,13 @@ String username = (String) session.getAttribute("username");
 					<div class="container-nav">
 						<div class="nav-bar">
 							<div class="logo">
-								<a href="http://localhost:8080/FleeBounce/products"> <img
+								<a href="http://localhost:8080/FleeBounce/home"> <img
 									src="../images/logo.png" />
 								</a>
 							</div>
 							<nav>
 								<ul>
-									<li><a href="http://localhost:8080/FleeBounce/products">Trang
+									<li><a href="http://localhost:8080/FleeBounce/home">Trang
 											chủ</a></li>
 									<li><a href="#">Sản phẩm</a></li>
 									<li><a href="#">Giới thiệu</a></li>

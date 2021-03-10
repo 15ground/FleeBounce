@@ -20,7 +20,6 @@ public class LoginFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
 		String loginURI = request.getContextPath() + "/views/sigin.jsp";
-
 		boolean loggedIn = session != null && session.getAttribute("username") != null;
 		boolean loginRequest = request.getRequestURI().equals(loginURI);
 		if (loggedIn || loginRequest) {

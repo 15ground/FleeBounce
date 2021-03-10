@@ -55,7 +55,7 @@ public class CategoriesController extends HttpServlet {
 			return;
 		} else {
 			String action = request.getParameter("action");
-			// handel sự kiện xảy ra khi user đã click vào form có thể là thêm , xoá , xửa
+			// handle sự kiện xảy ra khi user đã click vào form có thể là thêm , xoá , xửa
 			if (action != null) {
 				switch (action) {
 				case "Add":
@@ -78,15 +78,20 @@ public class CategoriesController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String description = request.getParameter("description");
-		Categories cat = new Categories(name, description);
-		boolean result = DAOCategories.create(cat);
 		HttpSession session = request.getSession();
-		if (result) {
-			session.setAttribute("message", "Thêm thành công");
+		if (name.isEmpty() || name.isBlank()) {
+			session.setAttribute("message", "Thêm không thành công, tên danh mục không được để trống!");
+			response.sendRedirect(request.getContextPath() + "/admin/category");
 		} else {
-			session.setAttribute("message", "Thêm không thành công");
+			Categories cat = new Categories(name, description);
+			boolean result = DAOCategories.create(cat);
+			if (result) {
+				session.setAttribute("message", "Thêm thành công");
+			} else {
+				session.setAttribute("message", "Thêm không thành công");
+			}
+			response.sendRedirect(request.getContextPath() + "/admin/category");
 		}
-		response.sendRedirect(request.getContextPath() + "/admin/category");
 	}
 
 	public void EditCategory(HttpServletRequest request, HttpServletResponse response)
@@ -96,16 +101,20 @@ public class CategoriesController extends HttpServlet {
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String description = request.getParameter("description");
-		Categories cat = new Categories(Integer.parseInt(id), name, description);
-		boolean result = DAOCategories.update(cat);
 		HttpSession session = request.getSession();
-		if (result) {
-			session.setAttribute("message", "Cập nhật thành công!");
+		if (name.isEmpty() || name.isBlank()) {
+			session.setAttribute("message", "Cập nhật không thành công, tên danh mục không được để trống!");
+			response.sendRedirect(request.getContextPath() + "/admin/category");
 		} else {
-			session.setAttribute("message", "Cập nhật không thành công!");
+			Categories cat = new Categories(Integer.parseInt(id), name, description);
+			boolean result = DAOCategories.update(cat);
+			if (result) {
+				session.setAttribute("message", "Cập nhật thành công!");
+			} else {
+				session.setAttribute("message", "Cập nhật không thành công!");
+			}
+			response.sendRedirect(request.getContextPath() + "/admin/category");
 		}
-
-		response.sendRedirect(request.getContextPath() + "/admin/category");
 	}
 
 	public void DeleteCategory(HttpServletRequest request, HttpServletResponse response)

@@ -39,6 +39,33 @@ public class DAOProducts {
 		return list;
 	}
 
+	public static ArrayList<Products> findAllDesc(int start, int total) {
+		ArrayList<Products> list = new ArrayList<Products>();
+		try {
+			String sql = "Select * From products order by id desc limit ?, ?;";
+			if (conn != null) {
+				PreparedStatement pst = conn.prepareStatement(sql);
+				pst.setInt(1, start - 1);
+				pst.setInt(2, total);
+				ResultSet rs = pst.executeQuery();
+				while (rs.next()) {
+					Products pro = new Products();
+					pro.setId(rs.getInt("id"));
+					pro.setName(rs.getString("name"));
+					pro.setImages(rs.getString("images"));
+					pro.setQuantity(rs.getInt("quantity"));
+					pro.setPrice(rs.getDouble("price"));
+					pro.setDescription(rs.getString("description"));
+					pro.setCategoryID(rs.getInt("categoryID"));
+					list.add(pro);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return list;
+	}
+
 	public static boolean create(Products product) {
 		try {
 			String sql = "INSERT INTO products (name, images, quantity, price, description, categoryID)"

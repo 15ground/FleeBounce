@@ -44,7 +44,6 @@ public class ProAdminController extends HttpServlet {
 				listCat = DAOCategories.findAll();
 //				Set dữ liệu vào trong biến để truyền tới views
 				request.setAttribute("listCat", listCat);
-				listCat = DAOCategories.findAll();
 				request.setAttribute("currentProd", currentProd);
 				request.setAttribute("title", "Sửa sản phẩm");
 				request.setAttribute("tabSelected", "sanpham");
@@ -108,21 +107,30 @@ public class ProAdminController extends HttpServlet {
 			}
 		} catch (Exception e) {
 		}
-		/*
-		 * String title, String description, String images, String contact, String url,
-		 * double price, int categoryId
-		 */
-		Products pro = new Products();
-		pro.setName(name);
-		pro.setDescription(description);
-		pro.setImages(images);
-		pro.setQuantity(quantity);
-		pro.setPrice(Double.parseDouble(price));
-		pro.setCategoryID(Integer.parseInt(cat));
-		boolean result = DAOProducts.create(pro);
 		HttpSession session = request.getSession();
-		session.setAttribute("message", "Thêm thành công");
-		response.sendRedirect(request.getContextPath() + "/admin/category");
+		if (name.isBlank() || name.isEmpty() || Double.parseDouble(price) < 0 || cat == null || images == null) {
+			session.setAttribute("message", "Thêm không thành công, vui lòng kiểm tra lại các thuộc tính!");
+			response.sendRedirect(request.getContextPath() + "/admin/product");
+		} else {
+			/*
+			 * String title, String description, String images, String contact, String url,
+			 * double price, int categoryId
+			 */
+			Products pro = new Products();
+			pro.setName(name);
+			pro.setDescription(description);
+			pro.setImages(images);
+			pro.setQuantity(quantity);
+			pro.setPrice(Double.parseDouble(price));
+			pro.setCategoryID(Integer.parseInt(cat));
+			boolean result = DAOProducts.create(pro);
+			if (result) {
+				session.setAttribute("message", "Thêm thành công");
+			} else {
+				session.setAttribute("message", "Thêm không thành công!");
+			}
+			response.sendRedirect(request.getContextPath() + "/admin/product");
+		}
 	}
 
 	public void EditProduct(HttpServletRequest request, HttpServletResponse response)
@@ -136,7 +144,6 @@ public class ProAdminController extends HttpServlet {
 		String description = request.getParameter("description");
 		String categoryID = request.getParameter("categoryCar");
 		String path = System.getProperty("user.dir") + "/upload";
-
 		String images = null;
 		try {
 			File dir = new File(request.getServletContext().getRealPath("/upload"));
@@ -151,24 +158,29 @@ public class ProAdminController extends HttpServlet {
 			}
 		} catch (Exception e) {
 		}
-
-//        public Car(int id, String image, String title, String url, Double price, String description, String contact, int categoryId)
-		Products car = new Products();
-		car.setId(Integer.parseInt(id));
-		car.setName(name);
-		car.setDescription(description);
-		car.setImages(images);
-		car.setQuantity(quantity);
-		car.setPrice(Double.parseDouble(price));
-		car.setCategoryID(Integer.parseInt(categoryID));
-		boolean result = DAOProducts.update(car);
 		HttpSession session = request.getSession();
-		if (result) {
-			session.setAttribute("message", "Sửa thành công!");
+		if (name.isBlank() || name.isEmpty() || Double.parseDouble(price) < 0 || categoryID == null || images == null) {
+			session.setAttribute("message", "Thêm không thành công, vui lòng kiểm tra lại các thuộc tính!");
+			response.sendRedirect(request.getContextPath() + "/admin/product");
 		} else {
-			session.setAttribute("message", "Sửa không thành công!");
+//	        public Car(int id, String image, String title, String url, Double price, String description, String contact, int categoryId)
+			Products car = new Products();
+			car.setId(Integer.parseInt(id));
+			car.setName(name);
+			car.setDescription(description);
+			car.setImages(images);
+			car.setQuantity(quantity);
+			car.setPrice(Double.parseDouble(price));
+			car.setCategoryID(Integer.parseInt(categoryID));
+			boolean result = DAOProducts.update(car);
+
+			if (result) {
+				session.setAttribute("message", "Sửa thành công!");
+			} else {
+				session.setAttribute("message", "Sửa không thành công!");
+			}
+			response.sendRedirect(request.getContextPath() + "/admin/product");
 		}
-		response.sendRedirect(request.getContextPath() + "/admin/product");
 	}
 
 	public void DeleteProduct(HttpServletRequest request, HttpServletResponse response)

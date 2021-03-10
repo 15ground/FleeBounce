@@ -47,7 +47,7 @@
 							<td>
 								<form action="product" method="post">
 									<input type="hidden" name="id" value="${prod.getId()}" /> <a
-										href="?id=${prod.getId()}">Edit</a>
+										href="?id=${prod.getId()}">Sửa</a>
 									<button type="submit" name="action" value="Delete"
 										class="btn btn-danger">X</button>
 								</form>
